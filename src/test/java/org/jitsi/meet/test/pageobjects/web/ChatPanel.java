@@ -108,4 +108,39 @@ public class ChatPanel
                         "The chat panel was expected to be %s.",
                         open ? "open" : "closed"));
     }
+
+    /*----------- NEW CODE ----------*/
+    
+    /**
+     * Types a message in the chat panel and sends it by pressing ENTER.
+     */
+    public String sendMessage()
+    {
+        String message = "Test message 123";
+        
+        this.participant.getDriver()
+            .findElement(By.id("userMsg"))
+            .sendKeys("Test message 123" + Keys.ENTER);
+
+        return message;
+    }
+
+    /**
+     * Checks if new participant can see the most recent message in the chat panel.
+     */
+    public boolean checkMessage(String message)
+    {
+        String previousMessage = this.participant.getDriver()
+            .findElement(By.xpath("//*[@id='chatconversation']/div[1]/div/div[1]/div/div/div[2]"))
+            .getText();
+
+        if (previousMessage.equals(message))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

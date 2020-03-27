@@ -199,6 +199,8 @@
         </profile>
     </profiles>
 
+
+
     <build>
         <!-- exclude everything, every profile will include the needed files -->
         <testResources>
@@ -211,6 +213,7 @@
         </testResources>
 
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

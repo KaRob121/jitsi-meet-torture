@@ -19,6 +19,10 @@ import org.jitsi.meet.test.pageobjects.web.*;
 import org.jitsi.meet.test.web.*;
 import org.testng.annotations.*;
 
+/*---------NEW CODE----------*/
+import org.jitsi.meet.test.util.*;
+/*-------END--------*/
+
 import static org.testng.Assert.*;
 
 /**
@@ -77,5 +81,40 @@ public class ChatPanelTest
         // The chat panel should be closed after clicking the button
         toolbar.clickChatButton();
         chatPanel.assertClosed();
+
+        /*--------------NEW CODE----------*/
+        // Open the chat panel for typing.
+        toolbar.clickChatButton();
+        chatPanel.assertOpen();
+
+        // Send a message to the chat panel.
+        String message = chatPanel.sendMessage();
+        // // Pause for 3 seconds to check the chat panel.
+        // try 
+        // {
+        //     Thread.sleep(3000);
+        // } 
+        // catch(InterruptedException e)
+        // {}
+
+        // Create a new participant.
+        ensureTwoParticipants();
+        WebParticipant participant2 = getParticipant2();
+
+        // Declare a display name for new participant.
+        participant2.setDisplayName("tester2");
+
+        ChatPanel chatPanel2 = participant2.getChatPanel();
+        Toolbar toolbar2 = participant2.getToolbar();
+
+        // Open the chat panel.
+        toolbar2.clickChatButton();
+        chatPanel2.assertOpen();
+
+        chatPanel2.checkMessage(message);
+        // Pause for 3 seconds to check the chat panel.
+        TestUtils.waitMillis(3000);
+
+        /*-------END---------*/
     }
 }

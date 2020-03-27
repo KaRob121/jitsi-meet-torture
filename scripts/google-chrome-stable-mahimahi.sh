@@ -28,7 +28,7 @@
 # author: George Politis
 # requires: mahimahi, socat
 
-CHROME=/usr/bin/google-chrome-stable
+CHROME=/usr/bin/google-chrome-beta
 
 finish() {
   # kill own descendants
