@@ -208,6 +208,9 @@ public class WebParticipantFactory
             ops.addArguments("disable-plugins");
             ops.addArguments("mute-audio");
             ops.addArguments("disable-infobars");
+            /*-------NEW CODE--------*/
+            ops.addArguments("ignore-certificate-errors");
+            /*-------------END------------*/
             // Since chrome v66 there are new autoplay policies, which broke
             // shared video tests, disable no-user-gesture to make it work
             ops.addArguments("autoplay-policy=no-user-gesture-required");
