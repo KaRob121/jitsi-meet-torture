@@ -126,6 +126,20 @@ public class ChatPanel
     }
 
     /**
+     * Types a naughty message in the chat panel and sends it by pressing ENTER.
+     */
+    public String sendBadMessage()
+    {
+        String badMessage = "FUCK";
+        
+        this.participant.getDriver()
+            .findElement(By.id("userMsg"))
+            .sendKeys("FUCK" + Keys.ENTER);
+
+        return badMessage;
+    }
+
+    /**
      * Checks if new participant can see the most recent message in the chat panel.
      */
     public boolean checkMessage(String message)

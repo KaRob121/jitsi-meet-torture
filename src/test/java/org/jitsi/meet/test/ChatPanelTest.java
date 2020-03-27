@@ -89,13 +89,6 @@ public class ChatPanelTest
 
         // Send a message to the chat panel.
         String message = chatPanel.sendMessage();
-        // // Pause for 3 seconds to check the chat panel.
-        // try 
-        // {
-        //     Thread.sleep(3000);
-        // } 
-        // catch(InterruptedException e)
-        // {}
 
         // Create a new participant.
         ensureTwoParticipants();
@@ -111,10 +104,13 @@ public class ChatPanelTest
         toolbar2.clickChatButton();
         chatPanel2.assertOpen();
 
+        // Checks that the message the participant 2 sees is the same as participant 1's original message.
         chatPanel2.checkMessage(message);
+
+        // Participant 2 sends a message with words on the censor list.
+        String badMessage = chatPanel2.sendBadMessage();
         // Pause for 3 seconds to check the chat panel.
         TestUtils.waitMillis(3000);
-
         /*-------END---------*/
     }
 }
